@@ -6,8 +6,11 @@ const User = mongoose.model("User");
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
-  res.send("You made a post request on heroku!");
-  // const { email, password } = req.body;
+  // res.send("You made a post request on heroku!");
+  const { email, password } = req.body;
+  const user = new User({ email, password });
+  await user.save();
+  res.send("Succesfully created User");
   // try {
   //   const user = new User({ email, password });
   //   await user.save();
