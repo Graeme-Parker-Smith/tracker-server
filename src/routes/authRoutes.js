@@ -8,19 +8,19 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   // res.send("You made a post request on heroku!");
   const { email, password } = req.body;
-  const user = new User({ email, password });
-  await user.save();
-  res.send("Succesfully created User");
-  // try {
-  //   const user = new User({ email, password });
-  //   await user.save();
-
-  //   const token = jwt.sign({ userId: user._id }, "MY_SECRET_KEY");
-  //   res.send({ token });
-  // } catch (err) {
-  //   return res.send(err);
-  //   // return res.status(422).send(err.message);
-  // }
+  // const user = new User({ email, password });
+  // await user.save();
+  try {
+    const user = new User({ email, password });
+    await user.save();
+    
+    // const token = jwt.sign({ userId: user._id }, "MY_SECRET_KEY");
+    // res.send({ token });
+    res.send("Succesfully created User");
+  } catch (err) {
+    // return res.send(err);
+    return res.status(422).send(err.message);
+  }
 });
 
 router.post("/signin", async (req, res) => {
