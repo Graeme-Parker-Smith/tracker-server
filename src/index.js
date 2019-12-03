@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-console.log(process.env.mongoString);
 const mongoUri = process.env.mongoString;
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
