@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const mongoUri =
-  "mongodb+srv://orzas:rocketlookout277@cluster0-iccqs.mongodb.net/test?retryWrites=true&w=majority";
+console.log(process.env.mongoString);
+const mongoUri = process.env.mongoString;
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,
